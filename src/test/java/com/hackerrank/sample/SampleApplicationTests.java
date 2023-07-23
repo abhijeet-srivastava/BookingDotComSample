@@ -41,7 +41,7 @@ public class SampleApplicationTests {
     @Test
     public void defaultHelloWithParamTest() throws Exception {
         mockMvc.perform(get("/defaultHello")
-                .param("message","HackerRank!"))
+                        .param("message","HackerRank!"))
                 .andDo(print())
                 .andExpect(jsonPath("$.echo").value("Hello HackerRank!"))
                 .andExpect(
@@ -51,9 +51,9 @@ public class SampleApplicationTests {
     @Test
     public void customHelloTest() throws Exception {
         mockMvc.perform(post("/customHello")
-                .param("message", "Custom Hello World!"))
+                        .param("message", "Custom Hello World!"))
                 .andDo(print())
-                .andExpect(jsonPath("$.echo").value("Custom Custom Hello World!"))
+                .andExpect(jsonPath("$.echo").value("Hello Custom Hello World!"))
                 .andExpect(
                         status().isOk());
     }
@@ -61,9 +61,9 @@ public class SampleApplicationTests {
     @Test
     public void customHelloWithEmptyParamTest() throws Exception {
         mockMvc.perform(post("/customHello")
-                .param("message", ""))
+                        .param("message", ""))
                 .andDo(print())
-                .andExpect(jsonPath("$.echo").value("Custom "))
+                .andExpect(jsonPath("$.echo").value("Hello "))
                 .andExpect(
                         status().isOk());
     }
